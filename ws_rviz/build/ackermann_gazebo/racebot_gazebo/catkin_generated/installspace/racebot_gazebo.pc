@@ -1,0 +1,8 @@
+prefix=/home/ge/Desktop/ros1/ws_rviz/install
+
+Name: racebot_gazebo
+Description: Description of racebot_gazebo
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

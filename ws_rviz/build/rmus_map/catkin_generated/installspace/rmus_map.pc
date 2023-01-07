@@ -1,0 +1,8 @@
+prefix=/home/ge/Desktop/ros1/ws_rviz/install
+
+Name: rmus_map
+Description: Description of rmus_map
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

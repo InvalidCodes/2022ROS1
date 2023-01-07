@@ -1,0 +1,2 @@
+ackermann_gazebo/racebot_control:ackermann_gazebo/racebot_description:ackermann_gazebo/racebot_gazebo:gazebo_ros_pkgs/gazebo_dev:gazebo_ros_pkgs/gazebo_msgs:gazebo_ros_pkgs/gazebo_plugins:gazebo_ros_pkgs/gazebo_ros:gazebo_ros_pkgs/gazebo_ros_control:gazebo_ros_pkgs/gazebo_ros_pkgs:rmus_map:urdf01_rviz:urdf02_gazebo
+-DCATKIN_DEVEL_PREFIX=/home/ge/Desktop/ros1/ws_rviz/devel -DCMAKE_INSTALL_PREFIX=/home/ge/Desktop/ros1/ws_rviz/install -G Unix Makefiles
