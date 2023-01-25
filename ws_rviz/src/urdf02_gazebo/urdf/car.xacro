@@ -4,4 +4,9 @@
     <xacro:include filename="demo02_chassis.xacro" />
     <xacro:include filename="demo02_camera.xacro" />
     <xacro:include filename="demo02_laser.xacro" />
+    <xacro:include filename="rmus_map_2.urdf" />
+    <xacro:include filename="gazebo/move.xacro" />
+    <xacro:include filename="gazebo/laser.xacro" />
+    <xacro:include filename="gazebo/camera.xacro" />
+    <xacro:include filename="gazebo/kinetic.xacro" />
 </robot>

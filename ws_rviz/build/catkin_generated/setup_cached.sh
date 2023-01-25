@@ -7,4 +7,9 @@
 # new environment variables
 
 # modified environment variables
+export CMAKE_PREFIX_PATH="/home/ge/Desktop/ros1/ws_rviz/devel:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH="/home/ge/Desktop/ros1/ws_rviz/devel/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/home/ge/Desktop/ros1/ws_rviz/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/ge/Desktop/ros1/ws_rviz/build'
+export PYTHONPATH="/home/ge/Desktop/ros1/ws_rviz/devel/lib/python3/dist-packages:$PYTHONPATH"
+export ROS_PACKAGE_PATH="/home/ge/Desktop/ros1/ws_rviz/src:$ROS_PACKAGE_PATH"

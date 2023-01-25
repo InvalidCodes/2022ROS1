@@ -1,0 +1,8 @@
+prefix=/home/ge/Desktop/ros1/ws_rviz/devel
+
+Name: putn_launch
+Description: Description of putn_launch
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -26,7 +26,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rmus_map/meshes/base_link.stl" />
+          filename="package://meshes/base_link.stl" />
       </geometry>
       <material
         name="">
@@ -40,7 +40,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rmus_map/meshes/base_link.stl" />
+          filename="package://meshes/base_link.stl" />
       </geometry>
     </collision>
   </link>
