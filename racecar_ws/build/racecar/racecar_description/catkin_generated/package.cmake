@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "racecar_description")
 set(racecar_description_VERSION "0.0.0")
-set(racecar_description_MAINTAINER "ubuntu <ubuntu@todo.todo>")
+set(racecar_description_MAINTAINER "ge <ge@todo.todo>")
 set(racecar_description_PACKAGE_FORMAT "1")
 set(racecar_description_BUILD_DEPENDS )
 set(racecar_description_BUILD_EXPORT_DEPENDS )
