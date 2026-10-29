@@ -1,0 +1,14 @@
+# catkin build outputs: regenerate with catkin_make
+build/
+build_isolated/
+devel/
+devel_isolated/
+install/
+install_isolated/
+logs/
+.catkin_tools/
+
+# Python / OS
+__pycache__/
+*.pyc
+.DS_Store
