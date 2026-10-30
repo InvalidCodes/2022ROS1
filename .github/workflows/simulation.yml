@@ -1,0 +1,18 @@
+name: simulation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-and-drive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the ROS Noetic image (both workspaces)
+        run: docker build -t ros1-racecar -f docker/Dockerfile .
+      - name: Drive the racecar to the end of the runway
+        run: docker run --rm ros1-racecar test_navigation.sh

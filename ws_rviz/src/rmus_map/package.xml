@@ -75,5 +75,6 @@
   <!-- The export tag contains other, unspecified, tags -->
   <export>
     <architecture_independent/>
+    <gazebo_ros gazebo_model_path="${prefix}/.."/>
   </export>
 </package>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- One-command demo: Gazebo + move_base/TEB + RViz + pure pursuit.
+       Pick a target with RViz's "2D Nav Goal" tool and the car drives there. -->
+  <include file="$(find racecar_gazebo)/launch/racecar_runway_navigation.launch"/>
+
+  <!-- move_base only plans; this node turns the plan into Ackermann steering and speed. -->
+  <node pkg="racecar_gazebo" type="path_pursuit.py" name="path_pursuit" output="screen"/>
+
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find racecar_gazebo)/config/racecar_rviz.rviz"/>
+</launch>

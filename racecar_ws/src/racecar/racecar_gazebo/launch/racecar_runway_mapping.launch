@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Autonomous driving on the runway (move_base + TEB, planning on the saved map) ... -->
+  <include file="$(find racecar_gazebo)/launch/racecar_runway_navigation.launch"/>
+
+  <!-- ... while gmapping builds a fresh map from the lidar alone, published on /slam_map. -->
+  <include file="$(find racecar_gazebo)/launch/gmapping.launch">
+    <arg name="map_topic" value="slam_map"/>
+    <arg name="map_update_interval" value="1.0"/>
+  </include>
+</launch>

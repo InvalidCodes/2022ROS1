@@ -12,3 +12,10 @@ logs/
 __pycache__/
 *.pyc
 .DS_Store
+
+# Editors
+.idea/
+.vscode/
+
+# Demo recordings from docker/record_demo.sh
+out/
