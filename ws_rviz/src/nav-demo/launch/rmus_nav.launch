@@ -1,0 +1,22 @@
+<launch>
+    <!-- Navigation on the saved RMUS map: AMCL localises the car, move_base plans and drives.
+         Pick goals with RViz's 2D Nav Goal, or run scripts/tour.py. -->
+    <arg name="gui" default="true"/>
+    <arg name="map" default="$(find nav-demo)/map/rmus_field.yaml"/>
+    <include file="$(find nav-demo)/launch/rmus_gazebo.launch">
+        <arg name="gui" value="$(arg gui)"/>
+    </include>
+
+    <node pkg="map_server" type="map_server" name="map_server" args="$(arg map)"/>
+
+    <!-- The car starts at (4.0, 1.9) in the map; AMCL is told roughly, not exactly. -->
+    <param name="amcl/initial_pose_x" value="4.3"/>
+    <param name="amcl/initial_pose_y" value="1.6"/>
+    <param name="amcl/initial_pose_a" value="0.2"/>
+    <param name="amcl/initial_cov_xx" value="0.5"/>
+    <param name="amcl/initial_cov_yy" value="0.5"/>
+    <param name="amcl/initial_cov_aa" value="0.3"/>
+    <include file="$(find nav-demo)/launch/nav04_amcl.launch"/>
+
+    <include file="$(find nav-demo)/launch/move_base.launch"/>
+</launch>

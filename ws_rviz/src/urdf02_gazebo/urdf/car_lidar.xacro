@@ -1,0 +1,20 @@
+<!-- The same car as car.xacro with only the lidar simulated: the RGB and depth cameras are
+     left out so Gazebo runs in real time with software rendering. Used by nav-demo. -->
+<robot name="mycar" xmlns:xacro="http://wiki.ros.org/xacro">
+    <xacro:include filename="head.xacro" />
+    <xacro:include filename="demo02_chassis.xacro" />
+    <xacro:include filename="demo02_camera.xacro" />
+    <xacro:include filename="demo02_laser.xacro" />
+    <xacro:include filename="gazebo/move.xacro" />
+    <xacro:include filename="gazebo/laser.xacro" />
+
+    <!-- Frictionless casters, so the two drive wheels carry the car over the ramps. -->
+    <gazebo reference="front_wheel">
+        <mu1>0.0</mu1>
+        <mu2>0.0</mu2>
+    </gazebo>
+    <gazebo reference="back_wheel">
+        <mu1>0.0</mu1>
+        <mu2>0.0</mu2>
+    </gazebo>
+</robot>

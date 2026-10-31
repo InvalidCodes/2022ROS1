@@ -1,0 +1,18 @@
+<launch>
+    <!-- The RMUS 2023 field in Gazebo with the two-wheel lidar car from urdf02_gazebo.
+         The field floor is a 10 cm slab, so the car starts on top of it. -->
+    <arg name="gui" default="true"/>
+    <arg name="x" default="4.0"/>
+    <arg name="y" default="1.9"/>
+    <arg name="yaw" default="0.0"/>
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find rmus_map)/world/rmus_field.world"/>
+        <arg name="gui" value="$(arg gui)"/>
+    </include>
+
+    <param name="robot_description" command="$(find xacro)/xacro $(find urdf02_gazebo)/urdf/car_lidar.xacro"/>
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_car"
+          args="-urdf -model mycar -param robot_description -x $(arg x) -y $(arg y) -z 0.12 -Y $(arg yaw)"/>
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
+</launch>

@@ -1,0 +1,123 @@
+Panels: []
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz/Map
+      Name: Saved map
+      Enabled: true
+      Topic: /map
+      Alpha: 1
+      Color Scheme: map
+      Draw Behind: true
+      Unreliable: false
+      Use Timestamp: false
+      Value: true
+    - Class: rviz/Map
+      Name: Costmap
+      Enabled: true
+      Topic: /move_base/global_costmap/costmap
+      Alpha: 0.35
+      Color Scheme: costmap
+      Draw Behind: false
+      Unreliable: false
+      Use Timestamp: false
+      Value: true
+    - Class: rviz/PoseArray
+      Name: AMCL particles
+      Enabled: true
+      Topic: /particlecloud
+      Shape: Arrow (Flat)
+      Color: 255; 200; 0
+      Alpha: 1
+      Arrow Length: 0.25
+      Head Length: 0.07
+      Head Radius: 0.04
+      Shaft Length: 0.18
+      Shaft Radius: 0.015
+      Value: true
+    - Class: rviz/LaserScan
+      Name: Lidar
+      Enabled: true
+      Topic: /scan
+      Style: Flat Squares
+      Size (m): 0.1
+      Color Transformer: FlatColor
+      Color: 0; 255; 0
+      Decay Time: 0
+      Queue Size: 10
+      Selectable: false
+      Use Fixed Frame: true
+      Value: true
+    - Class: rviz/Path
+      Name: Global plan
+      Enabled: true
+      Topic: /move_base/NavfnROS/plan
+      Color: 25; 255; 0
+      Alpha: 1
+      Line Style: Billboards
+      Line Width: 0.06
+      Buffer Length: 1
+      Pose Style: None
+      Value: true
+    - Class: rviz/Odometry
+      Name: Trail
+      Enabled: true
+      Topic: /odom
+      Keep: 500
+      Position Tolerance: 0.4
+      Angle Tolerance: 3.0
+      Covariance:
+        Value: false
+      Shape:
+        Value: Arrow
+        Color: 255; 60; 40
+        Alpha: 1
+        Shaft Length: 0.3
+        Shaft Radius: 0.05
+        Head Length: 0.2
+        Head Radius: 0.12
+      Value: true
+    - Class: rviz/Pose
+      Name: Goal
+      Enabled: true
+      Topic: /move_base/current_goal
+      Shape: Axes
+      Axes Length: 0.6
+      Axes Radius: 0.08
+      Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 48; 48; 48
+    Default Light: true
+    Fixed Frame: map
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz/Interact
+      Hide Inactive Objects: true
+    - Class: rviz/MoveCamera
+    - Class: rviz/SetInitialPose
+      Topic: /initialpose
+    - Class: rviz/SetGoal
+      Topic: /move_base_simple/goal
+  Value: true
+  Views:
+    Current:
+      Class: rviz/TopDownOrtho
+      Name: Current View
+      Value: TopDownOrtho (rviz)
+      Angle: 0
+      Scale: 34
+      X: 7.5
+      Y: 13.9
+      Target Frame: <Fixed Frame>
+      Near Clip Distance: 0.01
+      Invert Z Axis: false
+    Saved: ~
+Window Geometry:
+  Height: 1080
+  Width: 620
+  X: 1300
+  Y: 0
+  Hide Left Dock: true
+  Hide Right Dock: true

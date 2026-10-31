@@ -1,24 +1,37 @@
 #!/bin/bash
-# End-to-end check: start the runway simulation without the Gazebo window, send the car to the
-# far end of the track and pass once it stops within TOLERANCE metres of the goal.
+# End-to-end checks without the Gazebo window. CI runs both on every push.
 #
-#   docker run --rm ros1-racecar test_navigation.sh
-GOAL_X=${GOAL_X:-17.5}
-GOAL_Y=${GOAL_Y:--4.0}
-TOLERANCE=${TOLERANCE:-0.5}
-TIMEOUT=${TIMEOUT:-300}              # seconds of wall-clock time for the drive
+#   docker run --rm ros1-racecar test_navigation.sh rmus      # car + AMCL reaches 3 goals
+#   docker run --rm ros1-racecar test_navigation.sh racecar   # racecar reaches the runway end
+WORLD=${1:-rmus}
 LOG=${LOG:-/tmp/test_navigation}
 mkdir -p "$LOG"
 
-# gzserver still renders the car's camera, so it needs an X display even without the GUI.
-export DISPLAY=:98 LIBGL_ALWAYS_SOFTWARE=1
+# gzserver still renders the lidar and cameras, so it needs an X display even without the GUI.
+export DISPLAY=:98 LIBGL_ALWAYS_SOFTWARE=1 PYTHONUNBUFFERED=1
 Xvfb :98 -screen 0 640x480x24 -nolisten tcp &
 sleep 2
 
-roslaunch racecar_gazebo racecar_runway_navigation.launch gui:=false > "$LOG/roslaunch.log" 2>&1 &
-rosrun racecar_gazebo path_pursuit.py > "$LOG/pursuit.log" 2>&1 &
+case $WORLD in
+rmus)
+  roslaunch nav-demo rmus_nav.launch gui:=false > "$LOG/roslaunch.log" 2>&1 &
+  until rostopic echo -n 1 /odom/pose/pose/position > /dev/null 2>&1; do sleep 2; done
+  sleep 5
+  timeout 600 rosrun nav-demo tour.py _route:=nav 2>&1 | tee "$LOG/tour.log"
+  REACHED=$(grep -c ': reached' "$LOG/tour.log")
+  if [ "$REACHED" -eq 3 ]; then echo "PASS: 3/3 goals reached"; exit 0; fi
+  echo "FAIL: $REACHED/3 goals reached"
+  tail -n 40 "$LOG/roslaunch.log"
+  exit 1 ;;
+racecar)
+  roslaunch racecar_gazebo racecar_runway_navigation.launch gui:=false > "$LOG/roslaunch.log" 2>&1 &
+  rosrun racecar_gazebo path_pursuit.py > "$LOG/pursuit.log" 2>&1 &
+  ;;
+*) echo "usage: $0 rmus|racecar" >&2; exit 2 ;;
+esac
 
-python3 - "$GOAL_X" "$GOAL_Y" "$TOLERANCE" "$TIMEOUT" <<'PY'
+# Racecar: send it to the far end of the runway, pass once it is within 0.5 m of the goal.
+python3 - 17.5 -4.0 0.5 300 <<'PY'
 import math
 import sys
 import time

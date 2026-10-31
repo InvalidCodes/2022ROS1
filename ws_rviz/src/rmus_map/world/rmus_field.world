@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!-- The RMUS 2023 field on its own, as a static model, for SLAM and navigation demos.
+     (2023_v_4_1.world is the original export, with a car saved inside it.) -->
+<sdf version="1.6">
+  <world name="rmus_field">
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <model name="rmus_field">
+      <static>true</static>
+      <link name="field">
+        <collision name="collision">
+          <geometry>
+            <mesh>
+              <uri>model://rmus_map/meshes/base_link.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://rmus_map/meshes/base_link.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <physics type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+
+    <gui fullscreen="0">
+      <camera name="user_camera">
+        <!-- Looking at the whole field from above its south end. -->
+        <pose>7.5 -3.0 24.0 0 1.06 1.5708</pose>
+        <view_controller>orbit</view_controller>
+      </camera>
+    </gui>
+  </world>
+</sdf>
